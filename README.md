@@ -86,6 +86,7 @@ sort: date-desc
 ## Lightbox Controls
 
 ### Zoom & Pan
+- **Mouse Wheel**: Zoom in or out if you hover the image
 - **Left Click**: Zoom in (+1 zoom level)
 - **Right Click**: Zoom out (-1 zoom level)
 - **Mouse Movement** (when zoomed): Pan the image by moving the mouse - the image follows cursor position with adaptive sensitivity that slows at higher zoom levels
@@ -93,7 +94,7 @@ sort: date-desc
 ### Navigation
 - **Arrow Buttons**: Previous/next media
 - **Keyboard**: ← and → arrow keys, Escape to close
-- **Mouse Wheel**: Scroll up/down to change images
+- **Mouse Wheel**: Scroll up/down to change images if you do not hover a image
 - **Thumbnails**: Click any thumbnail in the bottom strip
 
 ### Special Features

@@ -307,13 +307,17 @@ function openMediaLightbox(app, mediaFiles, startIndex) {
         openFileInExplorer(app, state);
     });
 
+    const infoDiv = document.createElement('div');
+    infoDiv.className = 'lightbox-close-box';
+    infoDiv.addEventListener('click', () => closeLightbox(state));
     const closeBtn = document.createElement('button');
     closeBtn.className = 'lightbox-close-btn';
     closeBtn.textContent = '✕';
     closeBtn.addEventListener('click', () => closeLightbox(state));
 
     rightControls.appendChild(fileLink);
-    rightControls.appendChild(closeBtn);
+    infoDiv.appendChild(closeBtn);
+    rightControls.appendChild(infoDiv);
 
     topBar.appendChild(leftControls);
     topBar.appendChild(rightControls);
@@ -401,6 +405,7 @@ function openMediaLightbox(app, mediaFiles, startIndex) {
     document.addEventListener('keydown', keyHandler);
 
     const wheelHandler = (e) => {
+        if (document.querySelector('img:hover')) return; // Avoid conflict with image zoom/pan
         e.preventDefault();
         if (e.deltaY > 0) {
             navigate(state, 1);
@@ -540,6 +545,23 @@ function updateMedia(state, fileLink) {
             }
             updateTransform();
         });
+
+        const wheelHandler = (e) => {
+            if (!document.querySelector('img:hover')) return; // Avoid conflict with image zoom/pan
+            e.preventDefault();
+            if (e.deltaY < 0) {
+                zoomLevel += 1;
+                updateTransform();
+            } else if (e.deltaY > 0) {
+                zoomLevel = Math.max(1, zoomLevel - 1);
+                if (zoomLevel === 1) {
+                    panX = 0;
+                    panY = 0;
+                }
+                updateTransform();
+            }
+        };
+        img.addEventListener('wheel', wheelHandler, { passive: false });
 
         // Mouse move to pan when zoomed
         img.addEventListener('mousemove', (e) => {
@@ -699,10 +721,16 @@ function addLightboxStyles() {
             transition: background 0.2s;
             white-space: nowrap;
         }
-        
+        .lightbox-close-box {
+            height: 40px;
+            transform: translate(20px, -15px);
+            cursor: pointer;
+            padding: 14px 14px 0px 0px;
+        }
         .lightbox-random-btn:hover,
         .lightbox-slideshow-btn:hover,
-        .lightbox-close-btn:hover {
+        .lightbox-close-btn:hover,
+        .lightbox-close-box:hover .lightbox-close-btn {
             background: var(--interactive-hover);
         }
         
