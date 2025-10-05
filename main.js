@@ -326,18 +326,21 @@ function openMediaLightbox(app, mediaFiles, startIndex) {
     const mainArea = document.createElement('div');
     mainArea.className = 'lightbox-main';
 
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'lightbox-nav lightbox-prev';
-    prevBtn.textContent = '‹';
-    prevBtn.addEventListener('click', () => navigate(state, -1));
-
     const mediaContainer = document.createElement('div');
     mediaContainer.className = 'lightbox-media-container';
     mediaContainer.id = 'lightbox-media-container';
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'lightbox-nav lightbox-prev';
+    const prevArrow = document.createElement('span');
+    prevArrow.textContent = '‹';
+    prevBtn.appendChild(prevArrow);
+    prevBtn.addEventListener('click', () => navigate(state, -1));
 
     const nextBtn = document.createElement('button');
     nextBtn.className = 'lightbox-nav lightbox-next';
-    nextBtn.textContent = '›';
+    const nextArrow = document.createElement('span');
+    nextArrow.textContent = '›';
+    nextBtn.appendChild(nextArrow);
     nextBtn.addEventListener('click', () => navigate(state, 1));
 
     mainArea.appendChild(prevBtn);
@@ -811,6 +814,16 @@ function addLightboxStyles() {
             border-radius: 50%;
             transition: background 0.2s;
             z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .lightbox-nav span {
+            display: block;
+            line-height: 1;
+            transform: translateY(-5px);
         }
         
         .lightbox-nav:hover {
