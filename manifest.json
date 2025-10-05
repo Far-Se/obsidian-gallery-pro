@@ -1,0 +1,11 @@
+{
+	"id": "obsidian-gallery-pro",
+	"name": "Obsidian Gallery Pro",
+	"version": "1.0.0",
+	"minAppVersion": "0.15.0",
+	"description": "An advanced image gallery plugin for Obsidian.",
+	"author": "Far Se",
+	"authorUrl": "https://github.com/Far-Se",
+	"fundingUrl": "https://obsidian.md/pricing",
+	"isDesktopOnly": true
+}
