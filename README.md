@@ -1,11 +1,20 @@
-*(made entirely by Claude, even README)*
+*(made entirely by Claude, even the README)*
 
 # Media Gallery Pro Plugin for Obsidian
 
 A powerful media gallery plugin for Obsidian that displays images and videos from specified folders in an interactive grid layout with a full-featured lightbox viewer.
 ## Example Gallery
 
-| ![Grid](https://github.com/user-attachments/assets/5991f154-162b-4356-832a-c55d4f368f79) | ![Gallery](https://github.com/user-attachments/assets/62641bb1-60e3-4f1d-84bd-3de646179664) |
+<table>
+  <tr>
+    <td style="width:50%; text-align:center;">
+      <img src="https://github.com/user-attachments/assets/ebbd5468-0d15-4115-8f3d-d63b0e5dd3de" alt="Image 1" style="max-width:100%; height:auto;" />
+    </td>
+    <td style="width:50%; text-align:center;">
+      <img src="https://github.com/user-attachments/assets/f464e0f1-a5c2-4ba2-b42a-696f2e4ea048" alt="Image 2" style="max-width:100%; height:auto;" />
+    </td>
+  </tr>
+</table>
 
 
 ## Features
@@ -33,8 +42,9 @@ Add a code block with the `gallery-pro` identifier in any Obsidian note:
 path/to/folder
 ```
 or:
+
 ```gallery-pro
-paths: path/to/folder
+paths: path/to/folder,path/to/other/folder,another/folder
 sort: date-desc
 ```
 
